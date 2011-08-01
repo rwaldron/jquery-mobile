@@ -7,14 +7,14 @@
 ( function( $, undefined ) {
 
 $.fn.buttonMarkup = function( options ) {
-	return this.each( function() {
+	return this.each(function() {
+
 		var el = $( this ),
-			o = $.extend( {}, $.fn.buttonMarkup.defaults, el.jqmData(), options ),
+			o = $.extend({}, $.fn.buttonMarkup.defaults, el.jqmData(), options ),
 
 			// Classes Defined
 			innerClass = "ui-btn-inner",
-			buttonClass, iconClass,
-			themedParent, wrap;
+			buttonClass, iconClass, themedParent, wrap;
 
 		if ( attachEvents ) {
 			attachEvents();
@@ -140,9 +140,9 @@ var attachEvents = function() {
 
 //links in bars, or those with  data-role become buttons
 //auto self-init widgets
-$( document ).bind( "pagecreate create", function( e ){
+$( document ).bind( "pagecreate create", function( event ){
 
-	$( ":jqmData(role='button'), .ui-bar > a, .ui-header > a, .ui-footer > a", e.target )
+	$( ":jqmData(role='button'), .ui-bar > a, .ui-header > a, .ui-footer > a", event.target )
 		.not( ".ui-btn, :jqmData(role='none'), :jqmData(role='nojs')" )
 		.buttonMarkup();
 });
